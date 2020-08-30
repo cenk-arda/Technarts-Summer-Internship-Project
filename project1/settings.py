@@ -79,13 +79,15 @@ WSGI_APPLICATION = 'project1.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+env = environ.Env()
+environ.Env.read_env('.env')
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'first_db',
         'USER': 'root',
-        'PASSWORD': 'Pietromaximoff11',
+        'PASSWORD': env('UBER_SECURED_PASSWORD'),
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -135,7 +137,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 LOGIN_REDIRECT_URL = 'home'
 env = environ.Env()
-environ.Env.read_env()
+environ.Env.read_env('.env')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 EMAIL_HOST = 'smtp.gmail.com'
