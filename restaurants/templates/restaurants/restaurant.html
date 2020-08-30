@@ -1,0 +1,49 @@
+{% extends 'registration/base_layout.html' %}
+
+{% block restaurant %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'restaurants/style.css' %}">
+
+<div class="row row-cols-1 row-cols-md-4">
+ {% for meal in meals %}
+  <div class="col mb-4">
+        <div class="flip">
+              <div class="card">
+                  <div class="face front">
+                        <div class="inner">
+                                <img src="{{meal.image.url}}" class="card-img-top" alt="{{meal.meal_name}}">
+                                <div class="card-body">
+                                <h5 class="card-title">{{meal.meal_name}}</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                </div>
+                        </div>
+                  </div>
+                  <div class="face back" style="display:flex;justify-content:center;">
+                            <div class="inner" >
+                                <h3>{{meal.meal_name}}</h3>
+                                <p>Rating/best comment etc </p>
+                                <button type="button" data-id="{{meal.id}}" class="btn btn-danger">Show More</button>
+                            </div>
+                  </div>
+
+              </div>
+        </div>
+  </div>
+
+
+  {% endfor %}
+</div>
+
+<script>
+   $('.btn.btn-danger').click(function(){
+        var restaurant_id = "{{restaurant.id}}";
+        var meal_id = $(this).data("id");
+        console.log(String(meal_id));
+        window.location.href = String(meal_id)+'/';
+});
+    $('.flip').hover(function(){
+        $(this).find('.card').toggleClass('flipped');
+ });
+
+</script>
+{% endblock restaurant %}

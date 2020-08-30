@@ -1,0 +1,21 @@
+{% extends 'registration/base_layout.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block loggedout %}
+
+<div class = "row justify-content-center">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <a href = "{% url 'login' %}">Login here</a> or <a href="{% url 'signup' %} "> sign up.</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- ## %url 'reset_password' -->
+{% endblock loggedout %}

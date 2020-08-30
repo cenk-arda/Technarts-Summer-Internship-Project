@@ -1,0 +1,40 @@
+{% extends 'registration/base_layout.html' %}
+{% block restaurant_list %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'restaurants/style.css' %}">
+
+
+<p>List Restaurants here.</p>
+<ul class="list-unstyled" id="restaurants-ul">
+    {% for restaurant in restaurants %}
+    <li class="media" style="margin: 0 0 25px 0" data-id="{{restaurant.id}}">
+        <img src="{{ restaurant.image.url }}" style="width:100px;height:75px" class="mr-3" alt="...">
+        <div class="media-body">
+            <h5 class="mt-0 mb-1"> {{restaurant.restaurant_name}} </h5>
+            <h6>Phone: {{restaurant.phone}}</h6>
+
+            {% for meal in restaurant.restaurantsmeal_set.all %}
+
+            <span class="badge badge-danger" style="height:20px;">
+            <a href="#" style="color:white">{{meal.meal_name}}</a>
+            </span>
+
+            {% endfor %}
+
+        </div>
+    </li>
+    {% endfor %}
+
+
+</ul>
+
+<script>
+$(".media").click(function() {
+    var id = $(this).data("id");
+    window.location.href = String(id)+'/';
+});
+
+
+</script>
+
+{% endblock restaurant_list %}

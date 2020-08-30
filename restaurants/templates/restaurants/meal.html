@@ -1,0 +1,87 @@
+{% extends 'registration/base_layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block meal %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'restaurants/reviewstyle.css' %}"
+      xmlns:data-id="http://www.w3.org/1999/xhtml" xmlns:data-id="http://www.w3.org/1999/xhtml">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container" style="margin:auto">
+    <img src="{{meal.image.url}}" class="card-img-top" style="width:25%;height:25%;" alt="{{meal.meal_name}}">
+</div>
+
+<p> {{restaurant.restaurant_name}}'s {{meal.meal_name}} reviews will be listed here.</p>
+
+
+<!-- -->
+<section class="content-item" id="comments">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <br/>
+                <fieldset>
+                    <h3>New Review</h3>
+                    <div class="row">
+                        <div class="col-sm-3 col-lg-2 hidden-xs">
+                            <img class="img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                 style="width:100%;height:55%" alt="">
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-9 col-lg-10">
+                            <form method="POST" autocomplete="off">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                <button class="btn btn-danger">Add Review</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </fieldset>
+
+
+                <h3> {{ meal.comment_set.all|length }} Comments </h3>
+
+                {% for comment in meal.comment_set.all %}<!-- COMMENTS - START -->
+                <div class="media">
+                    <a class="pull-left" href="#"><img class="media-object"
+                                                       src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{comment.user.username}} </h4>
+
+                        <p> {{comment.text}} </p>
+                        <ul class="list-unstyled list-inline media-detail pull-left">
+                            <li><i class="fa fa-calendar"></i>{{comment.date}}</li>
+                            <li><i class="fa fa-thumbs-up"></i>13</li>
+                        </ul>
+                        <ul class="list-unstyled list-inline media-detail pull-right">
+                            {% if request.user == comment.user %}
+                            <li><i class="fa fa-trash" data-id="{{comment.id}}" style="cursor:pointer" ></i></li>
+                            {% endif %}
+                            <li class=""><a href="">Like</a></li>
+                            <li class=""><a href="">Reply</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+$('.fa.fa-trash').click(function(){
+    var restaurant_id = "{{restaurant.id}}";
+    var meal_id = "{{meal.id}}";
+    console.log(String(meal_id));
+
+    var comment_id = $(this).data("id");
+
+    window.location.href= 'delete/'+String(comment_id);
+});
+
+</script>
+{% endblock meal %}

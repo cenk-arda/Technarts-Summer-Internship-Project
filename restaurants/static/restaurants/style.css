@@ -1,0 +1,60 @@
+li.media {
+cursor: pointer;
+}
+
+.flip {
+  -webkit-perspective: 800;
+          perspective: 800;
+        position: relative;
+
+}
+.flip .card.flipped {
+  -webkit-transform: rotatey(-180deg);
+          transform: rotatey(-180deg);
+
+
+}
+.flip .card {
+
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: 0.5s;
+    transform-style: preserve-3d;
+    transition: 0.5s;
+    background-color: #fff;
+
+}
+.flip .card .face {
+  -webkit-backface-visibility: hidden ;
+    backface-visibility: hidden ;
+   z-index: 2;
+}
+.flip .card .front {
+
+
+   z-index: 1;
+}
+.flip .card .front img{
+
+}
+.flip .card .img {
+   position: relative;
+
+   z-index: 1;
+   border: 2px solid #000;
+}
+.flip .card .back {
+     position: absolute;
+  -webkit-transform: rotatey(-180deg);
+          transform: rotatey(-180deg);
+    padding-top: 25%;
+    padding-bottom: 25%;
+    padding-left: 25%;
+    padding-right: 25%;
+
+}
+
+.inner{
+  margin:0px;
+  text-align: center;
+  position: relative;
+}

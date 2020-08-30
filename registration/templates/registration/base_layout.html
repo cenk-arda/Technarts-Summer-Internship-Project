@@ -1,0 +1,129 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                {%if user.is_authenticated %}
+                <a class="nav-link" href="{% url 'restaurant_list' %}"> Restaurants <span
+                        class="sr-only">(current)</span></a>
+                {% else %}
+                <a class="nav-link" href="#"> Home <span class="sr-only">(current)</span></a>
+            </li>
+            {% endif %}
+            {%if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'loggedout' %}">Log out</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Log in</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'signup' %}">Sign up</a>
+            </li>
+            {% endif %}
+
+
+            {%if user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Menu
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'restaurant_list' %}">Restaurants</a>
+                    <a class="dropdown-item" href="{% url 'edit_profile' %}">Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            {% endif %}
+
+
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="false">Disabled</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container" style="margin:20px; margin-right:auto; margin-left: auto;">{% block login %}
+    {% endblock login %}
+</div>
+<div class="container" style="margin:20px; margin-right:auto; margin-left: auto;">{% block signup %}
+    {% endblock signup %}
+</div>
+<div class="container" style="margin:20px; margin-right:auto; margin-left: auto;"> {% block loggedout %}
+    {% endblock loggedout %}
+</div>
+
+{% block home %}
+<div class="container"
+     style="margin:20px; margin-right:auto; margin-left: auto;">
+</div>
+{% endblock %}
+
+<div class="container" style="margin:20px; margin-right:auto; margin-left: auto;"> {% block password_reset %}
+    {% endblock password_reset %}
+</div>
+<div class="container" style="margin:20px; margin-right:auto; margin-left: auto;"> {% block password_reset_done %}
+    {% endblock password_reset_done %}
+</div>
+<div class="container" style="margin:20px; margin-right:auto; margin-left: auto;">
+    {% block password_reset_confirm %}
+    {% endblock password_reset_confirm %}
+</div>
+<div class="container" style="margin:20px">
+    {% block password_reset_complete %}
+    {% endblock password_reset_complete %}
+</div>
+<div class="container" style="margin:20px; margin-right:auto; margin-left: auto;">
+    {% block restaurant_list %}
+    {% endblock restaurant_list %}
+</div>
+<div class="container" style="margin:40px; margin-right:auto; margin-left: auto;">
+    {% block restaurant %}
+    {% endblock restaurant %}
+</div>
+
+<div class="container" style="margin:20px; margin-right:auto; margin-left: auto;">
+    {% block profile %}
+    {% endblock profile %}
+
+</div>
+<div class="container">
+    {% block meal %}
+    {% endblock meal %}
+</div>
+
+
+</body>
+</html>
