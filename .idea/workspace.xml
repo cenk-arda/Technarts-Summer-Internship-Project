@@ -4,7 +4,101 @@
     <bookmark url="file://$PROJECT_DIR$/restaurants/templates/restaurants/profile.html" description="                &lt;li class=&quot;nav-item&quot;&gt;&#10;" line="12" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc9eda1a-9b22-49c8-a241-4773ee5a1ef3" name="Default" comment="" />
+    <list default="true" id="cc9eda1a-9b22-49c8-a241-4773ee5a1ef3" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/project1.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/manage.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/adana.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/aspavalogo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/baharatliitalyan-subway_big.webp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/beytikebap.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/classic2019_big.webp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/cookieguncel_big.webp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/dominos.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/extravaganzza2019_big.webp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hindigogussandvic-subway_big.webp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/iskender.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/kasarlidoner.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/kiymalipide.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/kusbasikasarpide.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/kusbasipide.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/lahmacun1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/ortaboydominossoslubolmalzemos_big.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/patlicankebabi.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/salatasebzekeyfi-subway_big.webp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/salatateriyakitavuk-subway_big.webp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/salatatonbaligi-subway_big.webp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/sebzekeyfisandvic-subway_big.webp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/subwayguncellogo_big.webp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/sucuksever2019_big.webp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/sufle2019_big.webp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/tavuksis.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/urfa.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project1/.env" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project1/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project1/asgi.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project1/settings.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project1/urls.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project1/wsgi.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/admin.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/apps.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/forms.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0001_initial.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0002_myuser.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/models.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/static/registration/background.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/templates/registration/base_layout.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/templates/registration/email_template.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/templates/registration/home.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/templates/registration/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/templates/registration/login.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/templates/registration/mainpage.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/templates/registration/password_reset.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/templates/registration/password_reset_complete.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/templates/registration/password_reset_confirm.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/templates/registration/password_reset_done.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/templates/registration/signup.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/templates/registration/subject_template.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/tests.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/urls.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/views.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/admin.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/apps.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/forms.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/migrations/0001_initial.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/migrations/0002_auto_20200826_2309.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/migrations/0003_auto_20200827_0237.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/migrations/0004_auto_20200828_0317.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/migrations/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/models.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/static/restaurants/reviewstyle.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/static/restaurants/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/templates/restaurants/meal.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/templates/restaurants/profile.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/templates/restaurants/restaurant.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/templates/restaurants/restaurant_list.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/tests.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/urls.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/restaurants/views.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sent_emails/20200824-145232-140491027082880.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sent_emails/20200824-170056-140045222479464.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sent_emails/20200824-170156-140045222479632.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sent_emails/20200824-170640-140045222233760.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sent_emails/20200824-170825-140045239725472.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sent_emails/20200824-182208-140045212096272.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sent_emails/20200824-183029-140072131541424.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sent_emails/20200824-200235-140423086908696.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sent_emails/20200824-200417-140423087085944.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sent_emails/20200824-211110-140369634929688.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sent_emails/20200824-211137-140369634636408.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sent_emails/20200824-211448-140136879382656.log" afterPath="" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,7 +108,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/restaurants/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="476">
@@ -112,11 +206,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project1/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3724">
-              <caret line="137" column="22" lean-forward="false" selection-start-line="137" selection-start-column="22" selection-end-line="137" selection-end-column="22" />
+            <state relative-caret-position="-173">
+              <caret line="36" column="16" lean-forward="true" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -157,6 +251,9 @@
       <find>view_prof</find>
       <find>Mary</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -221,6 +318,7 @@
     <option name="width" value="976" />
     <option name="height" value="1038" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -326,12 +424,12 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36627284" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.634434" sideWeight="0.5042965" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4056604" sideWeight="0.083243825" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.634434" sideWeight="0.49570355" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4056604" sideWeight="0.91675615" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -634,14 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project1/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3724">
-          <caret line="137" column="22" lean-forward="false" selection-start-line="137" selection-start-column="22" selection-end-line="137" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/registration/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -719,6 +809,14 @@
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project1/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-173">
+          <caret line="36" column="16" lean-forward="true" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
