@@ -87,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'first_db',
         'USER': 'root',
-        'PASSWORD': env('UBER_SECURED_PASSWORD'),
+        'PASSWORD': env('UBER_SECURE_PASSWORD'),
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -142,7 +142,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'effugium6@gmail.com'
+EMAIL_HOST_USER = env('HOST_MAIL')
 EMAIL_HOST_PASSWORD = env('ULTRAMEGA_SECRET_PASSWORD')
 
 EMAIL_USE_TLS = True

@@ -23,8 +23,15 @@ class UserCreationForm(UserCreationForm):
         fields = ['username', 'first_name', 'last_name', 'email', 'password1',
                   'password2']  ##by default, UserCreationForm has username,password1 and password2 fields.
 
+    def mail_is_unique(self):
+        username = self.cleaned_data['username']
+        if User.objects.filter(email=self.cleaned_data['email']).exclude(username=username).count():
+            return 0
+        return 1
+
     def save(self, commit=True):
-        user = super(UserCreationForm, self).save(commit=False)  ## create a modelform but don't send it to the database yet.
+        user = super(UserCreationForm, self).save(
+            commit=False)  ## create a modelform but don't send it to the database yet.
         user.email = self.cleaned_data['email']
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']

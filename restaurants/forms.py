@@ -8,7 +8,11 @@ class EditProfileForm(UserChangeForm):
     class Meta:
         model = User
         fields =  ['email','first_name', 'last_name']
-
+        widgets = {
+            'email': forms.EmailInput(attrs={'required': 'true'}),
+            'first_name': forms.TextInput(attrs={'required': 'true'}),
+            'last_name': forms.TextInput(attrs={'required': 'true'}),
+        }
 
 
 class AddReviewForm(forms.ModelForm):
@@ -16,3 +20,6 @@ class AddReviewForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['text']
+        widgets = {
+            'text': forms.Textarea(attrs={'rows':3, 'cols':15, 'placeholder': 'Write your review here (Note: max 250 chars)'})
+        }

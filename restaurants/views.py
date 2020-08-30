@@ -27,28 +27,41 @@ class RestaurantList(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         return render(request, template_name=self.template_name, context=self.context)
 
+        ##@login_required(login_url='/registration/accounts/login/')
+        ##def view_restaurant(request, restaurant_id):
 
-##@login_required(login_url='/registration/accounts/login/')
-##def view_restaurant(request, restaurant_id):
-    # id is an attribute that contains the value of the primary key for the model.
-    # if none of the fields of a model is set as primary_key=TRUE, django automatically adds a field like that:
-    # id = models.AutoField(primary_key=True) -> this is an auto-incrementing primary key.
-    # only 1 field can be set as the primary key in a model.
+        # id is an attribute that contains the value of the primary key for the model.
+        # if none of the fields of a model is set as primary_key=TRUE, django automatically adds a field like that:
+        # id = models.AutoField(primary_key=True) -> this is an auto-incrementing primary key.
+        # only 1 field can be set as the primary key in a model.
 
-    ##restaurant = Restaurant.objects.get(pk=restaurant_id)
-    ##meals = restaurant.restaurantsmeal_set.all()
-    ##return render(request, 'restaurants/restaurant.html', context={'restaurant': restaurant, 'meals': meals})
+        ##restaurant = Restaurant.objects.get(pk=restaurant_id)
+        ##meals = restaurant.restaurantsmeal_set.all()
+        ##return render(request, 'restaurants/restaurant.html', context={'restaurant': restaurant, 'meals': meals})
 
 
 class ViewRestaurant(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         restaurant_id = kwargs['restaurant_id']
-
         restaurant = Restaurant.objects.get(pk=restaurant_id)
         meals = restaurant.restaurantsmeal_set.all()
         return render(request, 'restaurants/restaurant.html', context={'restaurant': restaurant, 'meals': meals})
 
-@login_required(login_url='/registration/accounts/login/')
+
+class EditProfile(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        form = EditProfileForm()
+        return render(request, 'restaurants/profile.html', context={'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = EditProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('/profile')
+        return render(request, 'restaurants/profile.html', context={'form': form})
+
+
+"""@login_required(login_url='/registration/accounts/login/')
 def edit_profile(request):
     # Every ModelForm also has a save() method. This method creates and
     # saves a database object from the data bound to the form. A subclass
@@ -62,14 +75,37 @@ def edit_profile(request):
             form.save()
             return redirect('/profile')
     else:
-        form = EditProfileForm(request.POST, instance=request.user)
-    return render(request, 'restaurants/profile.html', context={'form': form})
+        form = EditProfileForm()
+    return render(request, 'restaurants/profile.html', context={'form': form})"""
 
 
-@login_required(login_url='/registration/accounts/login/')
+class ViewMeal(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        restaurant_id = kwargs['restaurant_id']
+        meal_id = kwargs['meal_id']
+        restaurant = Restaurant.objects.get(pk=restaurant_id)
+        meal = restaurant.restaurantsmeal_set.get(pk=meal_id)
+        form = AddReviewForm()
+        return render(request, 'restaurants/meal.html',
+                      context={'restaurant': restaurant, 'meal': meal, 'form': form})
+
+    def post(self, request, *args, **kwargs):
+        restaurant_id = kwargs['restaurant_id']
+        meal_id = kwargs['meal_id']
+        restaurant = Restaurant.objects.get(pk=restaurant_id)
+        meal = restaurant.restaurantsmeal_set.get(pk=meal_id)
+        form = AddReviewForm(request.POST)
+        comment = form.save(commit=False)
+        comment.restaurants_meal = meal
+        comment.user = request.user
+        comment.save()
+        return redirect('/restaurants/{restaurant_id}/{meal_id}/'.format(restaurant_id=restaurant_id, meal_id=meal_id))
+
+
+"""@login_required(login_url='/registration/accounts/login/')
 def view_meal(request, restaurant_id, meal_id):
     restaurant = Restaurant.objects.get(pk=restaurant_id)
-    meal = restaurant.restaurantsmeal_set.get(pk=meal_id);
+    meal = restaurant.restaurantsmeal_set.get(pk=meal_id);,
     if request.method == 'POST':
         form = AddReviewForm(request.POST)
         comment = form.save(commit=False)
@@ -81,12 +117,22 @@ def view_meal(request, restaurant_id, meal_id):
         form = AddReviewForm()
 
     return render(request, 'restaurants/meal.html',
-                  context={'restaurant': restaurant, 'meal': meal, 'form': form})
+                  context={'restaurant': restaurant, 'meal': meal, 'form': form})"""
 
 
-@login_required(login_url='/registration/accounts/login/')
+class DeleteReview(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        restaurant_id = kwargs['restaurant_id']
+        meal_id = kwargs['meal_id']
+        comment_id = kwargs['comment_id']
+        comment_to_delete = Comment.objects.get(pk=comment_id)
+        comment_to_delete.delete()
+        return redirect('/restaurants/{restaurant_id}/{meal_id}/'.format(restaurant_id=restaurant_id, meal_id=meal_id))
+
+
+"""@login_required(login_url='/registration/accounts/login/')
 def delete_review(request, restaurant_id, meal_id, comment_id):
     comment_to_delete = Comment.objects.get(pk=comment_id)
     comment_to_delete.delete()
 
-    return redirect('/restaurants/{restaurant_id}/{meal_id}/'.format(restaurant_id=restaurant_id, meal_id=meal_id))
+    return redirect('/restaurants/{restaurant_id}/{meal_id}/'.format(restaurant_id=restaurant_id, meal_id=meal_id))"""
