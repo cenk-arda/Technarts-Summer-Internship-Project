@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Restaurant, RestaurantsMeal, Comment, Rate
+from .models import Restaurant, RestaurantsMeal, Comment
 from .forms import EditProfileForm, AddReviewForm
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin

@@ -21,5 +21,8 @@ class AddReviewForm(forms.ModelForm):
         model = Comment
         fields = ['text']
         widgets = {
-            'text': forms.Textarea(attrs={'rows':3, 'cols':15, 'placeholder': 'Write your review here (Note: max 250 chars)'})
+            'text': forms.Textarea(attrs={'rows':3, 'cols':15, 'placeholder': 'What do you think about this meal? (Note: max 250 chars)'})
+        }
+        labels = {
+            'text': "It's review time!"
         }
