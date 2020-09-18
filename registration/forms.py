@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import MyUser
 
 
 class LoginForm(forms.Form):
@@ -35,8 +36,26 @@ class UserCreationForm(UserCreationForm):
         user.email = self.cleaned_data['email']
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
+        myuser = MyUser(user = user)
 
         if commit:  ##when customization/changes ends, commit gets its default value (True)
             user.save()
+            myuser.save()
 
         return user
+
+
+
+
+"""class SearchForm(forms.Form):
+    input = forms.CharField()
+
+    def get_results(self):
+        input_data = self.cleaned_data['input']
+        if input_data is not None:
+            restaurants = Restaurant.objects.filter(Q(restaurant_name__icontains=query))
+            meals = RestaurantsMeal.objects.filter(Q(meal_name__icontains=query))
+            users = MyUser.objects.filter(Q(user__username__icontains=query) | Q(user__first_name__icontains=query) |
+                                          Q(user__last_name__icontains=query) | Q(user__email__icontains=query))
+            context = {'restaurants': restaurants, 'meals': meals, 'users': users}
+            return context;"""

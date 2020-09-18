@@ -2,13 +2,13 @@
 
 {% load crispy_forms_tags %}
 {% block login %}
-
+{% load static %}
 <div class = "row justify-content-center">
     <div class="col-6">
         <div class="card">
             <div class="card-body">
             <h2>Log in</h2>
-            <form method="post">
+            <form method="post" autocomplete="off">
                 {% csrf_token %}
                 {{form|crispy}}
                 <button type="submit" class="btn btn-primary">Sign in</button>
@@ -22,7 +22,19 @@
     </div>
 </div>
 
+<style>
+body,html {
+    background-image: url({% static 'food-backgrounds.jpg' %});
+      /* Full height */
+    height: 100%;
 
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+</style>
 
 <!-- ## %url 'reset_password' -->
 {% endblock login %}

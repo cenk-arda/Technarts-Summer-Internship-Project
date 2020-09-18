@@ -1,7 +1,9 @@
 {% extends 'registration/base_layout.html' %}
 {% load crispy_forms_tags %}
-
+{% load static %}
 {% block profile %}
+
+
 <div class="container">
     <div class="row my-2">
         <div class="col-lg-8 order-lg-2">
@@ -9,9 +11,9 @@
                 <li class="nav-item">
                     <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
                 </li>
-                <li class="nav-item">
-                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
-                </li>
+                <!--<li class="nav-item">-->
+                    <!--<a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>-->
+                <!--</li>-->
                 <li class="nav-item">
                     <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
                 </li>
@@ -24,39 +26,37 @@
                         <div class="col-md-6">
                             <h6>About</h6>
                             <p>
-                                Student and a half Computer Engineer
+                                {{request.user.myuser.about}}
                             </p>
-                            <h6>Favourite Meals</h6>
-                            <p>
-                                Some meals like Kuşbaşılı Kaşarlı Pide
-                            </p>
+
                         </div>
                         <div class="col-md-6">
-                            <h6>Some badges (maybe favourite meals)</h6>
-                            <a href="#" class="badge badge-dark badge-pill">html5</a>
-                            <a href="#" class="badge badge-dark badge-pill">react</a>
-                            <a href="#" class="badge badge-dark badge-pill">codeply</a>
-                            <a href="#" class="badge badge-dark badge-pill">angularjs</a>
-                            <a href="#" class="badge badge-dark badge-pill">css3</a>
-                            <a href="#" class="badge badge-dark badge-pill">jquery</a>
-                            <a href="#" class="badge badge-dark badge-pill">bootstrap</a>
-                            <a href="#" class="badge badge-dark badge-pill">responsive-design</a>
+                            <h6>Favorite Meals</h6>
+                            {% for meal in user.myuser.likes.all %}
+                            <a href="/restaurants/{{meal.restaurant.id}}/{{meal.id}}" class="badge badge-danger badge-pill">{{meal.meal_name}}</a>
+                            {% endfor %}
                             <hr>
                             <span class="badge badge-primary"><i class="fa fa-user"></i>{{user.comment_set.all|length}} Reviews</span>
-                            <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Likes</span>
-                            <span class="badge badge-danger"><i class="fa fa-eye"></i> {{user.comment_set.all|length}} Reviews </span>
+                            <span class="badge badge-success"><i class="fa fa-cog"></i> {{user.myuser.likes.count}} Favorites</span>
+
                         </div>
-                        <div class="col-md-12">
-                            <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Last Reviews </h5>
+                        <div class="col-md-12" style="height:200px; overflow:scroll;">
+                            <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Last Reviews
+                            </h5>
                             <table class="table table-sm table-hover table-striped">
                                 <tbody>
-                                    {% for comment in user.comment_set.all %}
-                                    <tr>
-                                        <td>
-                                            <strong>{{user.first_name}},</strong> <strong> {{comment.restaurants_meal.restaurant}} </strong> restoranında <strong> {{comment.restaurants_meal}} </strong> yemeğini değerlendirdi.
-                                        </td>
-                                    </tr>
-                                    {% endfor %}
+                                {% for comment in user.comment_set.all reversed %}
+                                <!--last comment appears in top (reversed)-->
+                                <tr>
+                                    <td>
+                                        <strong>{{user.first_name}},</strong> <strong>
+                                        {{comment.restaurants_meal.restaurant}} </strong> restoranında <strong>
+                                        {{comment.restaurants_meal}} </strong> yemeğini <a
+                                            href="/restaurants/{{comment.restaurants_meal.restaurant.id}}/{{comment.restaurants_meal.id}}/#{{comment.id}}">değerlendirdi.
+                                        ({{comment.rate}} stars)</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
 
                                 </tbody>
                             </table>
@@ -64,60 +64,119 @@
                     </div>
                     <!--/row-->
                 </div>
-                <div class="tab-pane" id="messages">
-                    <div class="alert alert-info alert-dismissable">
-                        <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user.
-                    </div>
-                    <table class="table table-hover table-striped">
-                        <tbody>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">3 hrs ago</span> Here is your a link to the latest summary report from the..
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">Yesterday</span> There has been a request on your account since that was..
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">9/10</span> Porttitor vitae ultrices quis, dapibus id dolor. Morbi venenatis lacinia rhoncus.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">9/4</span> Vestibulum tincidunt ullamcorper eros eget luctus.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">9/4</span> Maxamillion ais the fix for tibulum tincidunt ullamcorper eros.
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="tab-pane" id="edit">
-                    <form method="post">
+                <!--<div class="tab-pane" id="messages">-->
+                    <!--<div class="alert alert-info alert-dismissable">-->
+                        <!--<a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use-->
+                        <!--this to show important messages to the user.-->
+                    <!--</div>-->
+                    <!--<table class="table table-hover table-striped">-->
+                        <!--<tbody>-->
+                        <!--<tr>-->
+                            <!--<td>-->
+                                <!--<span class="float-right font-weight-bold">3 hrs ago</span> Here is your a link to the-->
+                                <!--latest summary report from the..-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>-->
+                                <!--<span class="float-right font-weight-bold">Yesterday</span> There has been a request on-->
+                                <!--your account since that was..-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>-->
+                                <!--<span class="float-right font-weight-bold">9/10</span> Porttitor vitae ultrices quis,-->
+                                <!--dapibus id dolor. Morbi venenatis lacinia rhoncus.-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>-->
+                                <!--<span class="float-right font-weight-bold">9/4</span> Vestibulum tincidunt ullamcorper-->
+                                <!--eros eget luctus.-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>-->
+                                <!--<span class="float-right font-weight-bold">9/4</span> Maxamillion ais the fix for-->
+                                <!--tibulum tincidunt ullamcorper eros.-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
+                    <!--</table>-->
+                <!--</div>-->
+                <div class="tab-pane" id="edit" style="">
+                    <form method="post" action="profile" name="edit_form">
                         {% csrf_token %}
-
-                        {{ form|crispy }}
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        {{ edit_form|crispy }}
+                        <button type="submit" class="btn btn-primary" name="edit_form">Save changes</button>
                     </form>
+                    <form method="post" action="profile" name="about_form">
+                        {% csrf_token %}
+                        {{ about_form|crispy }}
+                        <button type="submit" class="btn btn-primary" name="about_form">Save changes</button>
+                    </form>
+
                 </div>
             </div>
         </div>
+
         <div class="col-lg-4 order-lg-1 text-center">
-            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+            {% if request.user.myuser.avatar %}
+            <img src="{{ request.user.myuser.avatar.url }}" style="width:100px; length:75px; border-radius:50%"
+                 alt="avatar">
+            {% else %}
+            <img src="media/default-avatar.png" style="width:100px; length:75px" alt="avatar">
+            {% endif %}
             <h6 class="mt-2">Upload a different photo</h6>
-            <label class="custom-file">
-                <input type="file" id="file" class="custom-file-input">
-                <span class="custom-file-control">Choose file</span>
-            </label>
+
+            <form method="post" action="profile" name="image_form" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {% for formfield in image_form %}
+                <span style="background-color: lightgray">{{ formfield }}</span>
+                {% endfor %}
+
+                <button type="submit" class="btn btn-primary" name="image_form">Upload this avatar</button>
+            </form>
+
         </div>
     </div>
 </div>
 
+<style>
+    body {
+    background-image: url({% static 'restaurants/restaurantlist4.jfif' %});
+      /* Full height */
+    height: 100%;
 
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Poppins', sans-serif;
+font-weight: 600;
+color:#222;
+}
+
+</style>
+
+<script type="text/javascript">
+
+
+        function upload_img(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img_id').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+    </script>
 {% endblock profile %}

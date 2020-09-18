@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 from django.conf.global_settings import LOGIN_REDIRECT_URL
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -135,7 +136,9 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
+
 env = environ.Env()
 environ.Env.read_env('.env')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

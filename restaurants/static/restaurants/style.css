@@ -1,6 +1,9 @@
-li.media {
-cursor: pointer;
+.mr-3 {
+ cursor: pointer;
 }
+.mt-0 {
+ cursor: pointer;
+ }
 
 .flip {
   -webkit-perspective: 800;
@@ -58,3 +61,4 @@ cursor: pointer;
   text-align: center;
   position: relative;
 }
+

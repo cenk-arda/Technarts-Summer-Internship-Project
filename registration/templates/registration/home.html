@@ -1,16 +1,408 @@
 {% extends 'registration/base_layout.html' %}
+{% load static %}
 
 
 {% block home %}
-<div class = "row justify-content-center">
-    <div class="col-6">
-        <div class="card" style = "text-align:center">
-            <div class="card-body">
-                <h1>Hello again</h1>
-            <h2> When logged in, this page shows up.</h2
+<!--<div class = "row justify-content-center">-->
+<!--<div class="col-6">-->
+<!--<div class="card" style = "text-align:center">-->
+<!--<div class="card-body">-->
+<!--<h1>Hello again</h1>-->
+<!--<h2> When logged in, this page shows up.</h2-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+<!--
+CSS
+============================================= -->
+<link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+<link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+<link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+<section class="banner-area relative" id="home">
+    <div class="container">
+        <div class="row fullscreen d-flex align-items-center justify-content-start" style="height: 722px;">
+            <div class="banner-content col-lg-8 col-md-12">
+                <h4 class="text-white text-uppercase">Wide Options of Choice</h4>
+                <h1>
+                    Millet Aç Aç!
+                </h1>
+                <p class="text-white">
+                    Find restaurants, eat meals, share your reviews. <br> Millet aç aç...
+                </p>
+                <a href="{% url 'restaurant_list'%}" class="primary-btn header-btn text-uppercase">Go To Restaurants</a>
+                <br><br>
+                <button class="primary-btn header-btn text-uppercase" id="seetop4"> See Most Reviewed Meals</button>
+                <button class="primary-btn header-btn text-uppercase" id="seetop4-2"> See Top Rated Meals</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="top-dish-area section-gap" id="dish">
+    <div class="container" id="container-dish">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Most Commented Meals</h1>
+                    <p>Who are in extremely love with eco friendly system.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for meal in most_reviewed_meals %}
+
+            <div class="single-dish col-lg-3">
+                <a href="/restaurants/{{meal.restaurant.id}}/{{meal.id}}/">
+                    <div class="thumb">
+                        <img class="img-fluid" src="{{meal.image.url}}" alt="">
+                    </div>
+
+                    <h4 class="text-uppercase pt-20 pb-20">{{meal.meal_name}}</h4>
+                    <p class="text-uppercase pt-20 pb-20">Price:  {{meal.price|stringformat:".2f"}}₺</p>
+                    <h5 class="text-uppercase pt-20 pb-20">Rating: {{meal.average_rate|stringformat:".1f"}}</h5>
+                    <div class="product-rating">
+                        <i class="fa fa-star{% if meal.average_rate <= 0.5 and meal.average_rate > 0 %}-half-o{% elif meal.average_rage == 0 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 1 and meal.average_rate < 2%}-half-o{% elif meal.average_rate <= 1 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 2 and meal.average_rate < 3%}-half-o{% elif meal.average_rate <= 2 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 3 and meal.average_rate < 4%}-half-o{% elif meal.average_rate <= 3 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 4 and meal.average_rate < 5%}-half-o{% elif meal.average_rate <= 4 %}-o empty{% endif%}"></i>
+                    </div>
+                    <h5 class="text-uppercase pt-20 pb-20">Reviews: {{meal.comment_count}}</h5>
+                    <p>
+                        <b>Kategori:</b> {{meal.category}} <br>
+                        <b>Restoran:</b> {{meal.restaurant.restaurant_name}} <br>
+                    </p>
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="top-dish-area section-ga" id="dish2">
+    <div class="container" id="container-dish-2">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Top Rated Meals</h1>
+                    <p>Who are in extremely love with eco friendly system.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for meal in top_rated_four %}
+
+            <div class="single-dish col-lg-3">
+                <a href="/restaurants/{{meal.restaurant.id}}/{{meal.id}}/">
+                    <div class="thumb">
+                        <img class="img-fluid" src="{{meal.image.url}}" alt="">
+                    </div>
+
+                    <h4 class="text-uppercase pt-20 pb-20">{{meal.meal_name}}</h4>
+                    <p class="text-uppercase pt-20 pb-20">Price:  {{meal.price|stringformat:".2f"}}₺</p>
+                    <h5 class="text-uppercase pt-20 pb-20">Rating: {{meal.average_rate|stringformat:".1f"}}</h5>
+                    <div class="product-rating">
+                        <i class="fa fa-star{% if meal.average_rate < 1 and meal.average_rate > 0 %}-half-o{% elif meal.average_rage == 0 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 1 and meal.average_rate <  2%}-half-o{% elif meal.average_rate <= 1 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 2 and meal.average_rate <  3%}-half-o{% elif meal.average_rate <= 2 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 3 and meal.average_rate <  4%}-half-o{% elif meal.average_rate <= 3 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 4 and meal.average_rate < 5%}-half-o{% elif meal.average_rate <= 4 %}-o empty{% endif%}"></i>
+                    </div>
+                    <h5 class="text-uppercase pt-20 pb-20">Reviews: {{meal.comment_set.count}}</h5>
+                    <p>
+                        <b>Category:</b> {{meal.category}} <br>
+                        <b>Restaurant:</b> {{meal.restaurant.restaurant_name}} <br>
+                    </p>
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% if suggested_meals_SVD|length %}
+<section class="top-dish-area section-gap" id="dish3">
+    <div class="container" id="container-dish-3">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Have you tried these, <b>{{request.user.first_name}}?</b></h1>
+                    <p>Thanks to our collaborative recommender system <b> <!--style="color:black"--> based on
+                        other users' preferences using Singular Value Decomposition(SVD) algorithm. </b></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for meal in suggested_meals_SVD%}
+
+            <div class="single-dish col-lg-3">
+                <a href="/restaurants/{{meal.restaurant.id}}/{{meal.id}}/">
+                    <div class="thumb">
+                        <img class="img-fluid" src="{{meal.image.url}}" alt="">
+                    </div>
+
+                    <h4 class="text-uppercase pt-20 pb-20">{{meal.meal_name}}</h4>
+                    <p class="text-uppercase pt-20 pb-20">Price:  {{meal.price|stringformat:".2f"}}₺</p>
+                    <h5 class="text-uppercase pt-20 pb-20">Rating: {{meal.average_rate|stringformat:".1f"}}</h5>
+                    <div class="product-rating">
+                        <i class="fa fa-star{% if meal.average_rate < 1 and meal.average_rate > 0 %}-half-o{% elif meal.average_rage == 0 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 1 and meal.average_rate <  2%}-half-o{% elif meal.average_rate <= 1 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 2 and meal.average_rate <  3%}-half-o{% elif meal.average_rate <= 2 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 3 and meal.average_rate <  4%}-half-o{% elif meal.average_rate <= 3 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 4 and meal.average_rate < 5%}-half-o{% elif meal.average_rate <= 4 %}-o empty{% endif%}"></i>
+                    </div>
+                    <h5 class="text-uppercase pt-20 pb-20">Reviews: {{meal.comment_set.count}}</h5>
+                    <p>
+                        <b>Category:</b> {{meal.category}} <br>
+                        <b>Restaurant:</b> {{meal.restaurant.restaurant_name}} <br>
+                    </p>
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+
+{% if pearson_correlated_meals|length %}
+<section class="top-dish-area section-ga" id="dish4">
+    <div class="container" id="container-dish-4">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Have you tried these, <b>{{request.user.first_name}}?</b></h1>
+                    <p>Thanks to our item-to-item recommender system <b> <!--style="color:black"--> based on Pearson's R
+                        Correlation. <b> </b></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for meal in pearson_correlated_meals %}
+
+            <div class="single-dish col-lg-3">
+                <a href="/restaurants/{{meal.restaurant.id}}/{{meal.id}}/">
+                    <div class="thumb">
+                        <img class="img-fluid" src="{{meal.image.url}}" alt="">
+                    </div>
+
+                    <h4 class="text-uppercase pt-20 pb-20">{{meal.meal_name}}</h4>
+                    <p class="text-uppercase pt-20 pb-20">Price:  {{meal.price|stringformat:".2f"}}₺</p>
+                    <h5 class="text-uppercase pt-20 pb-20">Rating: {{meal.average_rate|stringformat:".1f"}}</h5>
+
+                    <div class="product-rating">
+                        <i class="fa fa-star{% if meal.average_rate < 1 and meal.average_rate > 0 %}-half-o{% elif meal.average_rage == 0 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 1 and meal.average_rate <  2%}-half-o{% elif meal.average_rate <= 1 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 2 and meal.average_rate <  3%}-half-o{% elif meal.average_rate <= 2 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 3 and meal.average_rate <  4%}-half-o{% elif meal.average_rate <= 3 %}-o empty{% endif%}"></i>
+                        <i class="fa fa-star{% if meal.average_rate > 4 and meal.average_rate < 5%}-half-o{% elif meal.average_rate <= 4 %}-o empty{% endif%}"></i>
+                    </div>
+                    <h5 class="text-uppercase pt-20 pb-20">Reviews: {{meal.comment_set.count}}</h5>
+                    <p>
+                        <b>Category:</b> {{meal.category}} <br>
+                        <b>Restaurant:</b> {{meal.restaurant.restaurant_name}} <br>
+                    </p>
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+
+<!--{% if pearson_correlated_meals|length %}-->
+<!--<div class="modal" tabindex="-1" role="dialog" id="myModal">-->
+<!--<div class="modal-dialog" role="document">-->
+<!--<div class="modal-content">-->
+<!--<div class="modal-header">-->
+<!--<h5 class="modal-title">Have you tried these, <b>{{request.user.first_name}}</b>?</h5>-->
+<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--<span aria-hidden="true">&times;</span>-->
+<!--</button>-->
+<!--</div>-->
+<!--<div class="modal-body">-->
+<!--<div class="container" id="container-dish-4">-->
+<!--<div class="row d-flex justify-content-center">-->
+<!--<div class="menu-content pb-60 col-lg-8">-->
+<!--<div class="title text-center">-->
+<!--<h1 class="mb-10">Suggested For You</h1>-->
+<!--<p>Thanks to our collaborative recommender system <b> &lt;!&ndash;style="color:black"&ndash;&gt;based on-->
+<!--other users' preferences</b></p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="row">-->
+<!--{% for meal in pearson_correlated_meals %}-->
+
+<!--<div class="single-dish col-lg-3">-->
+<!--<a href="/restaurants/{{meal.restaurant.id}}/{{meal.id}}/">-->
+<!--<div class="thumb">-->
+<!--<img class="img-fluid" src="{{meal.image.url}}" alt="">-->
+<!--</div>-->
+
+<!--<h4 class="text-uppercase pt-20 pb-20">{{meal.meal_name}}</h4>-->
+<!--<h5 class="text-uppercase pt-20 pb-20">Rating:-->
+<!--{{meal.average_rate|stringformat:".1f"}}</h5>-->
+<!--<div class="product-rating">-->
+<!--<i class="fa fa-star{% if meal.average_rate < 1 and meal.average_rate > 0 %}-half-o{% elif meal.average_rate == 0 %}-o empty{% endif%}"></i>-->
+<!--<i class="fa fa-star{% if meal.average_rate > 1 and meal.average_rate <  2%}-half-o{% elif meal.average_rate <= 1 %}-o empty{% endif%}"></i>-->
+<!--<i class="fa fa-star{% if meal.average_rate > 2 and meal.average_rate <  3%}-half-o{% elif meal.average_rate <= 2 %}-o empty{% endif%}"></i>-->
+<!--<i class="fa fa-star{% if meal.average_rate > 3 and meal.average_rate <  4%}-half-o{% elif meal.average_rate <= 3 %}-o empty{% endif%}"></i>-->
+<!--<i class="fa fa-star{% if meal.average_rate > 4 and meal.average_rate < 5%}-half-o{% elif meal.average_rate <= 4 %}-o empty{% endif%}"></i>-->
+<!--</div>-->
+<!--<h5 class="text-uppercase pt-20 pb-20">Reviews: {{meal.comment_set.count}}</h5>-->
+<!--<p>-->
+<!--<b>Category:</b> {{meal.category}} <br>-->
+<!--<b>Restaurant:</b> {{meal.restaurant.restaurant_name}} <br>-->
+<!--</p>-->
+<!--</a>-->
+<!--</div>-->
+
+<!--{% endfor %}-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="modal-footer">-->
+<!--&lt;!&ndash;<button type="button" class="btn btn-primary">Save changes</button>&ndash;&gt;-->
+<!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--{% endif %}-->
+
+<div class="modal" tabindex="-1" role="dialog" id="myModal2">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Have you tried these, <b>{{request.user.first_name}}</b>?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container" id="container-dish-5">
+                    <div class="row d-flex justify-content-center">
+                        <div class="menu-content pb-60 col-lg-8">
+                            <div class="title text-center">
+                                <h1 class="mb-10">Suggested For You</h1>
+                                <p>Thanks to our collaborative recommender system <b> <!--style="color:black"--> based
+                                    on
+                                    other users' preferences using Singular Value Decomposition(SVD) algorithm.</b></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        {% for meal in suggested_meals_SVD %}
+
+                        <div class="single-dish col-lg-3">
+                            <a href="/restaurants/{{meal.restaurant.id}}/{{meal.id}}/">
+                                <div class="thumb">
+                                    <img class="img-fluid" src="{{meal.image.url}}" alt="">
+                                </div>
+
+                                <h4 class="text-uppercase pt-20 pb-20">{{meal.meal_name}}</h4>
+                                <p>Price: {{meal.price|stringformat:'.2f'}}₺</p>
+                                <h5 class="text-uppercase pt-20 pb-20">Rating:
+                                    {{meal.average_rate|stringformat:".1f"}}</h5>
+                                <div class="product-rating">
+                                    <i class="fa fa-star{% if meal.average_rate < 1 and meal.average_rate > 0 %}-half-o{% elif meal.average_rate == 0 %}-o empty{% endif%}"></i>
+                                    <i class="fa fa-star{% if meal.average_rate > 1 and meal.average_rate <  2%}-half-o{% elif meal.average_rate <= 1 %}-o empty{% endif%}"></i>
+                                    <i class="fa fa-star{% if meal.average_rate > 2 and meal.average_rate <  3%}-half-o{% elif meal.average_rate <= 2 %}-o empty{% endif%}"></i>
+                                    <i class="fa fa-star{% if meal.average_rate > 3 and meal.average_rate <  4%}-half-o{% elif meal.average_rate <= 3 %}-o empty{% endif%}"></i>
+                                    <i class="fa fa-star{% if meal.average_rate > 4 and meal.average_rate < 5%}-half-o{% elif meal.average_rate <= 4 %}-o empty{% endif%}"></i>
+                                </div>
+                                <h5 class="text-uppercase pt-20 pb-20">Reviews: {{meal.comment_set.count}}</h5>
+                                <p>
+                                    <b>Category:</b> {{meal.category}} <br>
+                                    <b>Restaurant:</b> {{meal.restaurant.restaurant_name}} <br>
+                                </p>
+                            </a>
+                        </div>
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
+
+
+<script>
+$("#top4").click(function() {
+console.log("tick");
+    $('html, body').animate({
+        scrollTop: $("#container-dish").offset().top
+    },1000);
+});
+$("#top4-2").click(function() {
+console.log("tick");
+    $('html, body').animate({
+        scrollTop: $("#container-dish-2").offset().top
+    },1500);
+});
+$("#top4-3").click(function() {
+console.log("tick");
+    $('html, body').animate({
+        scrollTop: $("#container-dish-3").offset().top
+    },2000);
+});
+$("#top4-4").click(function() {
+console.log("tick");
+    $('html, body').animate({
+        scrollTop: $("#container-dish-4").offset().top
+    },2500);
+});
+$("#seetop4").click(function() {
+console.log("tick");
+    $('html, body').animate({
+        scrollTop: $("#container-dish").offset().top
+    },1000);
+});
+$("#seetop4-2").click(function() {
+console.log("tick");
+    $('html, body').animate({
+        scrollTop: $("#container-dish-2").offset().top
+    },1500);
+});
+
+    $(window).on('load',function(){
+        $('#myModal2').modal('show');
+    });
+    $(window).on('load',function(){
+        $('#myModal').modal('show');
+    });
+
+
+
+
+
+</script>
+
 
 {% endblock home %}

@@ -2,19 +2,19 @@
 
 {% load crispy_forms_tags %}
 {% block signup %}
-
+{% load static %}
 
 <div class = "row justify-content-center">
     <div class="col-6">
         <div class="card">
             <div class="card-body">
             <h2>Sign Up</h2>
-            <form method="post">
+            <form method="post" autocomplete="off">
                 {% csrf_token %}
                 {% if form.mail_is_unique == 0 %}
                     <p style="color:red">This email is taken.</p>
                 {% endif %}
-                {{form|crispy}}
+                {{ form|crispy }}
 
                 <button type="submit" class="btn btn-primary">Sign up</button>
                 <a href="{% url 'login' %}" class ="btn btn-link"> Do you have account? Sign in.</a>
@@ -26,7 +26,19 @@
     </div>
 </div>
 
+<style>
+body,html {
+    background-image: url({% static 'food-backgrounds.jpg' %});
+      /* Full height */
+    height: 100%;
 
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+</style>
 
 
 <!-- ## %url 'reset_password' -->

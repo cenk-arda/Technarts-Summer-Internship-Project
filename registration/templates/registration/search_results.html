@@ -1,0 +1,155 @@
+{% extends 'registration/base_layout.html' %}
+{% load static %}
+{% block search_results %}
+
+
+{% if  meals.count == 0 and restaurants.count == 0 and users.count == 0 and categories.count == 0%}
+<p style="text-align:center">Couldn't found anything :(</p>
+{% elif query == ''%}
+<script>alert("Please type something!")</script>
+{% else %}
+
+
+{% if meals.count != 0 %}
+<h5 style="">Meals</h5>
+<ul class="list-group" style="">
+    {% for meal in meals %}
+    <li class="media" style="margin: 0 0 25px 0;">
+        <a href="/restaurants/{{meal.restaurant.id}}/{{meal.id}}">
+            <img data-id="{{meal.id}}" src="{{meal.image.url}}" style="width:100px;length:75px" class="mr-3" alt="...">
+        </a>
+        <div class="media-body">
+            <a href="/restaurants/{{meal.restaurant.id}}/{{meal.id}}">
+                <h5 class="mt-0 mb-1" style="color:black" data-id="{{meal.id}}"> {{ meal.meal_name }} </h5>
+            </a>
+            <h6 style="color:gray">{{meal.category}}</h6>
+        </div>
+
+    </li>
+
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if restaurants.count != 0 %}
+<h5 style="">Restaurants</h5>
+<ul class="list-group" id="restaurants-ul" style="">
+    {% for restaurant in restaurants %}
+    <li class="media" style="margin: 0 0 25px 0;">
+        <a href="/restaurants/{{restaurant.id}}">
+            <img data-id="{{restaurant.id}}" src="{{ restaurant.image.url }}" style="width:100px;length:75px"
+                 class="mr-3" alt="...">
+        </a>
+        <div class="media-body">
+            <a href="/restaurants/{{restaurant.id}}"><h5 class="mt-0 mb-1" style="color:black"
+                                                         data-id="{{restaurant.id}}">
+                {{restaurant.restaurant_name}} </h5></a>
+            <h6 style="color:gray">Phone: {{restaurant.phone}}</h6>
+
+            {% for meal in restaurant.restaurantsmeal_set.all %}
+
+            <span class="badge badge-danger" style="height:20px;">
+                            <a href="/restaurants/{{restaurant.id}}/{{meal.id}}"
+                               style="color:white">{{meal.meal_name}}</a>
+                            </span>
+
+            {% endfor %}
+
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+{% if users.count != 0 %}
+<h5 style="">Users</h5>
+
+<ul class="list-group" style="">
+    {% for myuser in users %}
+    <li class="media" style="margin: 0 0 25px 0; ">
+        <a href="/user/{{myuser.user.id}}">
+            {% if myuser.avatar %}
+            <img data-id="{{myuser.user.id}}" src="{{myuser.avatar.url}}" style="width:100px; length:75px;" class="mr-3"
+                 alt="...">
+            {% else %}
+            <img data-id="{{myuser.user.id}}" src="{% static 'restaurants/default-avatar.png' %}"
+                 style="width:100px; length:75px" class="mr-3" alt="...">
+            {% endif %}
+        </a>
+        <div class="media-body">
+            <a href="/user/{{myuser.user.id}}"><h5 class="mt-0 mb-1" style="color:black" data-id="{{myuser.user.id}}">
+                {{myuser.user.username}} </h5></a>
+            <h6 style="color:gray">{{myuser.user.first_name}} {{myuser.user.last_name}}</h6>
+
+        </div>
+    </li>
+
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if categories.count != 0 %}
+<h5 style="">"{{query}}" Kategorisinde</h5>
+
+<ul class="list-group" style="">
+    {% for meal in categories %}
+    <li class="media" style="margin: 0 0 25px 0;">
+        <a href="/restaurants/{{meal.restaurant.id}}/{{meal.id}}">
+            <img data-id="{{meal.id}}" src="{{meal.image.url}}" style="width:100px;length:75px" class="mr-3" alt="...">
+        </a>
+        <div class="media-body">
+            <a href="/restaurants/{{meal.restaurant.id}}/{{meal.id}}">
+                <h5 class="mt-0 mb-1" style="color:black" data-id="{{meal.id}}"> {{ meal.meal_name }} </h5>
+            </a>
+            <h6 style="color:gray">{{meal.category}}</h6>
+        </div>
+
+    </li>
+
+    {% endfor %}
+</ul>
+
+{% endif %}
+
+{% endif %}
+
+
+
+
+
+<style>
+html {
+    margin:0;
+    height: auto;
+}
+body {
+
+      /* Full height */
+    height: auto;
+    margin:0;
+  /* Center and scale the image nicely */
+  background-color:#f0f0f0;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+    .clr{
+    clear: both;
+    font-size:0;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Poppins', sans-serif;
+font-weight: 600;
+color:#222;
+}
+
+
+
+
+
+</style>
+
+{% endblock search_results %}
